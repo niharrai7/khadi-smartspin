@@ -1,0 +1,4844 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Khadi SmartSpin | Smart Spinning Machine</title>
+
+
+<style>
+/* =========================================
+   ADVANCED SENSOR CONTROL CENTER
+========================================= */
+
+.advanced-sensors {
+
+    margin-top: 55px;
+
+    padding: 35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0b1730,
+            #12284a
+        );
+
+    border-radius: 25px;
+
+    color: white;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.15);
+
+}
+
+
+/* TITLE */
+
+.advanced-title {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+
+}
+
+.mini-label {
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #63a4ff;
+
+    font-weight: bold;
+
+}
+
+.advanced-title h2 {
+
+    font-size: 30px;
+
+    margin: 7px 0;
+
+}
+
+.advanced-title p {
+
+    color: #aebbd0;
+
+    max-width: 600px;
+
+}
+
+
+/* SYSTEM STATUS */
+
+.system-online {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 10px 16px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(34,197,94,0.12);
+
+    border:
+        1px solid rgba(34,197,94,0.35);
+
+    color: #4ade80;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+
+}
+
+
+/* PULSE DOT */
+
+.pulse-dot {
+
+    width: 9px;
+
+    height: 9px;
+
+    display: inline-block;
+
+    background: #22c55e;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 0 rgba(34,197,94,0.6);
+
+    animation:
+        sensorPulse 1.5s infinite;
+
+}
+
+@keyframes sensorPulse {
+
+    0% {
+        box-shadow:
+            0 0 0 0
+            rgba(34,197,94,0.6);
+    }
+
+    70% {
+        box-shadow:
+            0 0 0 9px
+            rgba(34,197,94,0);
+    }
+
+    100% {
+        box-shadow:
+            0 0 0 0
+            rgba(34,197,94,0);
+    }
+
+}
+
+
+/* SENSOR GRID */
+
+.sensor-data-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 18px;
+
+}
+
+
+/* SENSOR CARD */
+
+.sensor-data-card {
+
+    background:
+        rgba(255,255,255,0.07);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.1);
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    transition:
+        transform .3s,
+        background .3s,
+        box-shadow .3s;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.sensor-data-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    background:
+        rgba(255,255,255,0.11);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,0.2);
+
+}
+
+
+/* TOP */
+
+.data-top {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+.sensor-symbol {
+
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(76,141,255,0.15);
+
+    border-radius: 12px;
+
+    font-size: 22px;
+
+}
+
+.data-top h3 {
+
+    font-size: 16px;
+
+}
+
+.data-top span {
+
+    font-size: 10px;
+
+    color: #8fa4c0;
+
+    letter-spacing: 1px;
+
+}
+
+.live-dot {
+
+    margin-left: auto;
+
+    color: #22c55e;
+
+    font-size: 18px;
+
+    animation:
+        liveBlink 1.2s infinite;
+
+}
+
+@keyframes liveBlink {
+
+    0%,100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .3;
+    }
+
+}
+
+
+/* READING */
+
+.reading {
+
+    margin-top: 25px;
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 7px;
+
+}
+
+.reading strong {
+
+    font-size: 32px;
+
+    color: #63a4ff;
+
+}
+
+.reading small {
+
+    color: #9eabc0;
+
+}
+
+
+/* SIGNAL */
+
+.signal-label {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 20px;
+
+    margin-bottom: 7px;
+
+    font-size: 11px;
+
+    color: #9eabc0;
+
+}
+
+.signal-label span {
+
+    color: #63a4ff;
+
+    font-weight: bold;
+
+}
+
+.signal-bar {
+
+    width: 100%;
+
+    height: 6px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+}
+
+.signal-bar div {
+
+    height: 100%;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2878ff,
+            #63d8ff
+        );
+
+}
+
+
+/* DESCRIPTION */
+
+.sensor-info {
+
+    margin-top: 18px;
+
+    color: #9eabc0;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+}
+
+
+/* ARDUINO */
+
+.arduino-monitor {
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.1);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+.arduino-icon {
+
+    font-size: 30px;
+
+}
+
+.arduino-text {
+
+    flex: 1;
+
+}
+
+.arduino-text h3 {
+
+    margin-bottom: 5px;
+
+}
+
+.arduino-text p {
+
+    color: #94a7c0;
+
+    font-size: 13px;
+
+}
+
+.arduino-status {
+
+    color: #4ade80;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px) {
+
+    .sensor-data-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .advanced-title {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .advanced-sensors {
+
+        padding: 20px;
+
+    }
+
+    .sensor-data-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .arduino-monitor {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+}
+/* =========================================
+   BASIC SETTINGS
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        #f7f9ff;
+
+    color: #17233c;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   ANIMATED BACKGROUND
+========================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(91,108,255,0.15),
+            transparent 70%
+        );
+
+    top: -200px;
+    right: -150px;
+
+    border-radius: 50%;
+
+    z-index: -1;
+
+    animation:
+        floatBackground 8s infinite alternate ease-in-out;
+}
+
+@keyframes floatBackground {
+
+    from {
+        transform: translate(0,0);
+    }
+
+    to {
+        transform: translate(-100px,100px);
+    }
+
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+nav {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        0 6%;
+
+    background:
+        rgba(7,22,48,0.92);
+
+    backdrop-filter:
+        blur(15px);
+
+    color: white;
+
+    box-shadow:
+        0 5px 25px
+        rgba(0,0,0,0.15);
+}
+
+.logo {
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    color: white;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+}
+
+.logo span {
+
+    color: #ffb703;
+
+}
+
+.nav-links {
+
+    display: flex;
+
+    gap: 25px;
+
+}
+
+.nav-links a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition:
+        0.3s;
+
+}
+
+.nav-links a:hover {
+
+    color:
+        #ffb703;
+
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    padding:
+        120px 7% 70px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    align-items: center;
+
+    gap: 50px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #eef4ff,
+            #fff8ed
+        );
+
+}
+
+.hero-text {
+
+    animation:
+        slideLeft 1s ease;
+
+}
+
+@keyframes slideLeft {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(0);
+
+    }
+
+}
+
+.badge {
+
+    display: inline-block;
+
+    padding:
+        8px 14px;
+
+    border-radius:
+        30px;
+
+    background:
+        #e4e9ff;
+
+    color:
+        #4c5cff;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        1px;
+
+}
+
+.hero h1 {
+
+    font-size:
+        clamp(42px, 6vw, 75px);
+
+    line-height:
+        0.98;
+
+    margin:
+        20px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #14213d,
+            #4c5cff,
+            #f59e0b
+        );
+
+    -webkit-background-clip:
+        text;
+
+    color:
+        transparent;
+
+}
+
+.hero p {
+
+    max-width:
+        600px;
+
+    color:
+        #667085;
+
+    line-height:
+        1.7;
+
+}
+
+.start-btn {
+
+    margin-top:
+        25px;
+
+    padding:
+        15px 25px;
+
+    border:
+        none;
+
+    border-radius:
+        12px;
+
+    color:
+        white;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4c5cff,
+            #8a5cff
+        );
+
+    box-shadow:
+        0 10px 25px
+        rgba(76,92,255,0.3);
+
+    transition:
+        0.3s;
+
+}
+
+.start-btn:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.03);
+
+}
+
+
+/* =========================================
+   3D MACHINE
+========================================= */
+
+.machine-stage {
+
+    height:
+        430px;
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    perspective:
+        900px;
+
+    animation:
+        slideRight 1s ease;
+
+}
+
+@keyframes slideRight {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(50px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(0);
+
+    }
+
+}
+
+.machine-body {
+
+    position:
+        relative;
+
+    width:
+        520px;
+
+    height:
+        270px;
+
+    transform:
+        rotateX(8deg)
+        rotateY(-8deg);
+
+    transition:
+        0.5s;
+
+    filter:
+        drop-shadow(
+            0 25px 25px
+            rgba(0,0,0,0.2)
+        );
+
+}
+
+.machine-base {
+
+    position:
+        absolute;
+
+    bottom:
+        20px;
+
+    left:
+        20px;
+
+    right:
+        20px;
+
+    height:
+        35px;
+
+    border-radius:
+        10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #754c29,
+            #c38b52,
+            #754c29
+        );
+
+    box-shadow:
+        0 8px 0 #4b301c;
+
+}
+
+.machine-top {
+
+    position:
+        absolute;
+
+    top:
+        25px;
+
+    left:
+        130px;
+
+    right:
+        70px;
+
+    height:
+        28px;
+
+    border-radius:
+        7px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #a96f3d,
+            #e0a866,
+            #a96f3d
+        );
+
+}
+
+.machine-support {
+
+    position:
+        absolute;
+
+    width:
+        25px;
+
+    top:
+        40px;
+
+    bottom:
+        50px;
+
+    border-radius:
+        4px;
+
+    background:
+        #8b5a32;
+
+}
+
+.machine-support.left {
+
+    left:
+        45px;
+
+}
+
+.machine-support.right {
+
+    right:
+        45px;
+
+}
+
+
+/* =========================================
+   HAND WHEEL
+========================================= */
+
+.hand-wheel {
+
+    position:
+        absolute;
+
+    left:
+        5px;
+
+    top:
+        75px;
+
+    width:
+        135px;
+
+    height:
+        135px;
+
+    border:
+        14px solid #252525;
+
+    border-radius:
+        50%;
+
+    background:
+        transparent;
+
+    transition:
+        transform
+        0.1s linear;
+
+    box-shadow:
+        inset 0 0 0 3px #555;
+
+}
+
+.hand-wheel::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    width:
+        4px;
+
+    height:
+        105px;
+
+    background:
+        #777;
+
+    transform:
+        translate(-50%,-50%);
+
+}
+
+.hand-wheel::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    width:
+        4px;
+
+    height:
+        105px;
+
+    background:
+        #777;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(90deg);
+
+}
+
+.wheel-center {
+
+    position:
+        absolute;
+
+    width:
+        22px;
+
+    height:
+        22px;
+
+    background:
+        #777;
+
+    border:
+        4px solid #222;
+
+    border-radius:
+        50%;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    transform:
+        translate(-50%,-50%);
+
+}
+
+
+/* =========================================
+   SHAFT
+========================================= */
+
+.shaft {
+
+    position:
+        absolute;
+
+    left:
+        125px;
+
+    right:
+        75px;
+
+    top:
+        137px;
+
+    height:
+        9px;
+
+    border-radius:
+        10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #555,
+            #bbb,
+            #555
+        );
+
+}
+
+
+/* =========================================
+   SPINDLES
+========================================= */
+
+.spindle-container {
+
+    position:
+        absolute;
+
+    left:
+        190px;
+
+    right:
+        75px;
+
+    top:
+        75px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-around;
+
+}
+
+.spindle {
+
+    text-align:
+        center;
+
+    font-size:
+        9px;
+
+    font-weight:
+        bold;
+
+    color:
+        #445;
+
+}
+
+.bobbin {
+
+    width:
+        48px;
+
+    height:
+        105px;
+
+    border-radius:
+        12px;
+
+    border:
+        5px solid #d2a86e;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #fff 0px,
+            #fff 5px,
+            #d9bb87 6px,
+            #d9bb87 10px
+        );
+
+    box-shadow:
+        0 8px 15px
+        rgba(0,0,0,0.18);
+
+    transform-origin:
+        center;
+
+}
+
+
+/* =========================================
+   CONTROL BOX
+========================================= */
+
+.control-box {
+
+    position:
+        absolute;
+
+    right:
+        -5px;
+
+    top:
+        65px;
+
+    width:
+        80px;
+
+    height:
+        125px;
+
+    border-radius:
+        10px;
+
+    padding:
+        10px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #252b35,
+            #10141a
+        );
+
+    box-shadow:
+        0 10px 20px
+        rgba(0,0,0,0.25);
+
+}
+
+.lcd {
+
+    background:
+        #a9d18e;
+
+    color:
+        #17321a;
+
+    padding:
+        8px;
+
+    border-radius:
+        3px;
+
+    font-family:
+        monospace;
+
+    font-size:
+        9px;
+
+    line-height:
+        1.6;
+
+}
+
+
+/* =========================================
+   SECTION
+========================================= */
+
+section {
+
+    padding:
+        90px 7%;
+
+    scroll-margin-top:
+        70px;
+
+}
+
+.section-heading {
+
+    text-align:
+        center;
+
+    margin-bottom:
+        45px;
+
+}
+
+.section-heading .number {
+
+    color:
+        #4c5cff;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        2px;
+
+}
+
+.section-heading h2 {
+
+    font-size:
+        42px;
+
+    margin-top:
+        8px;
+
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+.dashboard {
+
+    background:
+        #07172d;
+
+    color:
+        white;
+
+}
+
+.dashboard .section-heading h2 {
+
+    color:
+        white;
+
+}
+
+.metrics {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(6,1fr);
+
+    gap:
+        15px;
+
+}
+
+.metric {
+
+    padding:
+        20px;
+
+    border-radius:
+        18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #102d50,
+            #0b2038
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    transition:
+        0.3s;
+
+}
+
+.metric:hover {
+
+    transform:
+        translateY(-7px);
+
+}
+
+.metric-icon {
+
+    font-size:
+        24px;
+
+}
+
+.metric-title {
+
+    display:
+        block;
+
+    margin-top:
+        10px;
+
+    color:
+        #8fa7c4;
+
+    font-size:
+        11px;
+
+}
+
+.metric-value {
+
+    display:
+        block;
+
+    margin:
+        7px 0;
+
+    font-size:
+        29px;
+
+    color:
+        #fff;
+
+}
+
+.metric small {
+
+    color:
+        #6e8aaa;
+
+}
+
+
+/* =========================================
+   GRAPH
+========================================= */
+
+.graph-box {
+
+    margin-top:
+        25px;
+
+    padding:
+        25px;
+
+    border-radius:
+        20px;
+
+    background:
+        #0b2038;
+
+}
+
+.graph-box h3 {
+
+    margin-bottom:
+        15px;
+
+}
+
+canvas {
+
+    width:
+        100%;
+
+    height:
+        280px;
+
+}
+
+
+/* =========================================
+   SENSORS
+========================================= */
+
+.sensor-section {
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #edf3ff
+        );
+
+}
+
+.sensor-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        18px;
+
+}
+
+.sensor-card {
+
+    position:
+        relative;
+
+    padding:
+        22px;
+
+    border-radius:
+        18px;
+
+    background:
+        white;
+
+    box-shadow:
+        0 10px 30px
+        rgba(30,50,100,0.08);
+
+    overflow:
+        hidden;
+
+}
+
+.sensor-card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    top:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        5px;
+
+    background:
+        #24c77a;
+
+}
+
+.sensor-icon {
+
+    font-size:
+        30px;
+
+}
+
+.sensor-card h3 {
+
+    margin:
+        10px 0 5px;
+
+}
+
+.sensor-card p {
+
+    color:
+        #78859a;
+
+    font-size:
+        12px;
+
+}
+
+.sensor-reading {
+
+    font-size:
+        22px;
+
+    font-weight:
+        bold;
+
+    color:
+        #4c5cff;
+
+    margin:
+        10px 0;
+
+}
+
+.status {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    margin-top:
+        15px;
+
+    padding:
+        6px 10px;
+
+    border-radius:
+        20px;
+
+    background:
+        #e5fff1;
+
+    color:
+        #14864f;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+}
+
+.status-dot {
+
+    width:
+        8px;
+
+    height:
+        8px;
+
+    border-radius:
+        50%;
+
+    background:
+        #20c77a;
+
+    animation:
+        pulse 1.5s infinite;
+
+}
+
+@keyframes pulse {
+
+    0%,100% {
+        opacity:1;
+        transform:scale(1);
+    }
+
+    50% {
+        opacity:.4;
+        transform:scale(1.5);
+    }
+
+}
+
+
+/* =========================================
+   CONTROLS
+========================================= */
+
+.controls {
+
+    margin-top:
+        25px;
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        10px;
+
+    justify-content:
+        center;
+
+}
+
+.control-btn {
+
+    border:
+        none;
+
+    padding:
+        13px 18px;
+
+    border-radius:
+        12px;
+
+    background:
+        #4c5cff;
+
+    color:
+        white;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    transition:
+        .3s;
+
+}
+
+.control-btn:hover {
+
+    transform:
+        translateY(-3px);
+
+}
+
+.break-btn {
+
+    background:
+        #ff5263;
+
+}
+
+.reset-btn {
+
+    background:
+        #667085;
+
+}
+
+
+/* =========================================
+   PRODUCTIVITY
+========================================= */
+
+.productivity {
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff4d9,
+            #fff
+        );
+
+}
+
+.productivity-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
+    gap:
+        20px;
+
+}
+
+.product-card {
+
+    padding:
+        30px;
+
+    border-radius:
+        20px;
+
+    background:
+        white;
+
+    box-shadow:
+        0 15px 35px
+        rgba(80,60,20,0.1);
+
+}
+
+.product-card h3 {
+
+    margin-bottom:
+        15px;
+
+}
+
+.big-number {
+
+    font-size:
+        45px;
+
+    font-weight:
+        900;
+
+    color:
+        #f59e0b;
+
+}
+
+.bar {
+
+    height:
+        14px;
+
+    margin-top:
+        15px;
+
+    border-radius:
+        20px;
+
+    background:
+        #eee;
+
+    overflow:
+        hidden;
+
+}
+
+.bar-fill {
+
+    height:
+        100%;
+
+    width:
+        35%;
+
+    border-radius:
+        inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffb703,
+            #fb5607
+        );
+
+    transition:
+        1s;
+
+}
+
+
+/* =========================================
+   IMPACT
+========================================= */
+
+.impact-section {
+
+    background:
+        linear-gradient(
+            180deg,
+            #faf6ee,
+            #fff
+        );
+
+}
+
+.impact-header {
+
+    max-width:
+        720px;
+
+    margin:
+        0 auto 55px;
+
+    text-align:
+        center;
+
+}
+
+.impact-header .section-number {
+
+    color:
+        #a9752c;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        2px;
+
+}
+
+.impact-header h2 {
+
+    font-size:
+        40px;
+
+    line-height:
+        1.15;
+
+    margin-top:
+        10px;
+
+    color:
+        #17233c;
+
+}
+
+.impact-header h2 span {
+
+    color:
+        #a9752c;
+
+}
+
+.impact-header p {
+
+    margin-top:
+        18px;
+
+    color:
+        #667085;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* IMPACT GRID */
+
+.impact-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:
+        18px;
+
+}
+
+.impact-card {
+
+    position:
+        relative;
+
+    padding:
+        28px 24px;
+
+    border-radius:
+        18px;
+
+    background:
+        #fff;
+
+    border:
+        1px solid
+        #e9e1d3;
+
+    transition:
+        transform .3s,
+        box-shadow .3s,
+        border-color .3s;
+
+    overflow:
+        hidden;
+
+}
+
+.impact-card:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        #d8c8a5;
+
+    box-shadow:
+        0 20px 40px
+        rgba(80,60,20,0.1);
+
+}
+
+.impact-top {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+}
+
+.impact-number {
+
+    font-size:
+        13px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        1px;
+
+    color:
+        #cabb9c;
+
+}
+
+.impact-icon {
+
+    width:
+        46px;
+
+    height:
+        46px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        20px;
+
+    border-radius:
+        12px;
+
+    background:
+        #faf1de;
+
+}
+
+.impact-card h3 {
+
+    margin-top:
+        22px;
+
+    font-size:
+        18px;
+
+    color:
+        #17233c;
+
+}
+
+.impact-card p {
+
+    margin-top:
+        10px;
+
+    color:
+        #778196;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.7;
+
+}
+
+.impact-bottom {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-top:
+        22px;
+
+    padding-top:
+        16px;
+
+    border-top:
+        1px solid
+        #f0ebdf;
+
+    font-size:
+        10px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        1.5px;
+
+    color:
+        #a9752c;
+
+}
+
+.impact-bottom span:last-child {
+
+    font-size:
+        14px;
+
+}
+
+
+/* IMPACT FLOW */
+
+.impact-flow {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    margin-top:
+        60px;
+
+    padding:
+        35px 30px;
+
+    border-radius:
+        20px;
+
+    background:
+        #17233c;
+
+}
+
+.impact-flow-item {
+
+    flex:
+        1;
+
+    text-align:
+        center;
+
+    color:
+        white;
+
+}
+
+.impact-flow-item span {
+
+    display:
+        block;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        2px;
+
+    color:
+        #ffb703;
+
+}
+
+.impact-flow-item strong {
+
+    display:
+        block;
+
+    margin-top:
+        8px;
+
+    font-size:
+        18px;
+
+    letter-spacing:
+        1px;
+
+}
+
+.impact-flow-item small {
+
+    display:
+        block;
+
+    margin-top:
+        6px;
+
+    color:
+        #98a4bd;
+
+    font-size:
+        11px;
+
+}
+
+.impact-flow-line {
+
+    width:
+        60px;
+
+    height:
+        1px;
+
+    background:
+        rgba(255,255,255,0.2);
+
+    margin:
+        0 5px;
+}
+
+
+@media(max-width:1000px) {
+
+    .impact-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+    .impact-flow {
+
+        flex-wrap:
+            wrap;
+
+        gap:
+            25px;
+
+    }
+
+    .impact-flow-line {
+
+        display:
+            none;
+
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .impact-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .impact-header h2 {
+
+        font-size:
+            30px;
+
+    }
+
+}
+
+
+/* =========================================
+   WORKING STEPS
+========================================= */
+
+.steps {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(6,1fr);
+
+    gap:
+        12px;
+
+}
+
+.step {
+
+    padding:
+        20px;
+
+    text-align:
+        center;
+
+    background:
+        white;
+
+    border-radius:
+        16px;
+
+    border:
+        1px solid #e5e9f0;
+
+    transition:
+        .3s;
+
+}
+
+.step:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 15px 25px
+        rgba(0,0,0,.08);
+
+}
+
+.step-number {
+
+    margin:
+        auto;
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        50%;
+
+    color:
+        white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4c5cff,
+            #8a5cff
+        );
+
+    font-weight:
+        bold;
+
+}
+
+.step h3 {
+
+    font-size:
+        14px;
+
+    margin:
+        12px 0 5px;
+
+}
+
+.step p {
+
+    font-size:
+        11px;
+
+    color:
+        #778196;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =========================================
+   ARDUINO
+========================================= */
+
+.arduino {
+
+    background:
+        #07172d;
+
+    color:
+        white;
+
+}
+
+.arduino .section-heading h2 {
+
+    color:
+        white;
+
+}
+
+.connection {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr auto 1fr auto 1fr;
+
+    align-items:
+        center;
+
+    gap:
+        15px;
+
+}
+
+.connection-card {
+
+    padding:
+        25px;
+
+    border-radius:
+        20px;
+
+    background:
+        #102d50;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        #1e466e;
+
+}
+
+.connection-card .icon {
+
+    font-size:
+        40px;
+
+}
+
+.connection-card h3 {
+
+    margin:
+        10px 0;
+
+}
+
+.connection-card p {
+
+    color:
+        #91a7c0;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.8;
+
+}
+
+.arrow {
+
+    font-size:
+        35px;
+
+    color:
+        #ffb703;
+
+}
+
+
+/* =========================================
+   ALERT
+========================================= */
+
+.alert {
+
+    margin:
+        20px auto;
+
+    max-width:
+        700px;
+
+    padding:
+        15px;
+
+    text-align:
+        center;
+
+    border-radius:
+        12px;
+
+    background:
+        #102d50;
+
+    color:
+        #8fa7c4;
+
+}
+
+.alert.warning {
+
+    background:
+        #4a1d25;
+
+    color:
+        #ff8b96;
+
+    animation:
+        warningFlash 1s infinite alternate;
+
+}
+
+@keyframes warningFlash {
+
+    from {
+        box-shadow:
+            0 0 0
+            rgba(255,50,70,0);
+    }
+
+    to {
+        box-shadow:
+            0 0 25px
+            rgba(255,50,70,.4);
+    }
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+
+    padding:
+        30px 7%;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    background:
+        #04101f;
+
+    color:
+        white;
+
+}
+
+footer p {
+
+    color:
+        #71849c;
+
+    font-size:
+        11px;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:1000px) {
+
+    .hero {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .metrics {
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+    }
+
+    .sensor-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .steps {
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+    }
+
+    .productivity-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .connection {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .arrow {
+
+        transform:
+            rotate(90deg);
+
+        text-align:
+            center;
+
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .nav-links {
+
+        display:
+            none;
+
+    }
+
+    .metrics {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .sensor-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .steps {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+    .machine-body {
+
+        transform:
+            scale(.65);
+
+    }
+
+}
+.advanced-sensors {
+    margin-top: 40px;
+    padding: 30px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #0b1730, #164477);
+    color: white;
+}
+
+.advanced-sensors h2 {
+    margin-bottom: 8px;
+}
+
+.advanced-sensors > p {
+    color: #b8c7dc;
+    margin-bottom: 25px;
+}
+
+.sensor-live-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.live-sensor {
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.live-sensor h3 {
+    margin-bottom: 15px;
+}
+
+.live-sensor div {
+    font-size: 28px;
+    font-weight: bold;
+    color: #63a4ff;
+    margin-bottom: 8px;
+}
+
+.live-sensor span {
+    color: #aebbd0;
+    font-size: 13px;
+}
+
+.arduino-status-box {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    background: rgba(34,197,94,0.12);
+    display: flex;
+    justify-content: space-between;
+}
+
+.arduino-status-box strong {
+    color: #4ade80;
+}
+
+@media(max-width:800px) {
+    .sensor-live-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width:550px) {
+    .sensor-live-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .arduino-status-box {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     NAVIGATION
+===================================== -->
+
+<nav>
+
+    <a href="#home" class="logo">
+        KHADI <span>SMARTSPIN</span>
+    </a>
+
+    <div class="nav-links">
+
+        <a href="#home">Home</a>
+
+        <a href="#machine">Machine</a>
+
+        <a href="#dashboard">Dashboard</a>
+
+        <a href="#working">Working</a>
+
+        <a href="#arduino">Arduino</a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<section id="home" class="hero">
+
+    <div class="hero-text">
+
+        <div class="badge">
+            SMART INDIA HACKATHON • PROTOTYPE
+        </div>
+
+        <h1>
+            Smart Spinning
+            for a Smarter
+            Khadi Future.
+        </h1>
+
+        <p>
+
+            An Arduino and sensor-based
+            multi-spindle hand-spinning system
+            designed to improve artisan
+            productivity, yarn consistency
+            and income.
+
+        </p>
+
+        <button
+            class="start-btn"
+            onclick="startDemo()">
+
+            ▶ START LIVE DEMO
+
+        </button>
+
+    </div>
+
+
+
+    <!-- 3D MACHINE -->
+
+    <div class="machine-stage">
+
+        <div class="machine-body">
+
+            <div class="machine-top"></div>
+
+            <div class="machine-support left"></div>
+
+            <div class="machine-support right"></div>
+
+            <div class="shaft"></div>
+
+            <div
+                id="heroWheel"
+                class="hand-wheel">
+
+                <div class="wheel-center"></div>
+
+            </div>
+
+
+            <div class="spindle-container">
+
+                <div class="spindle">
+
+                    <div
+                        id="heroBobbin1"
+                        class="bobbin">
+                    </div>
+
+                    <span>SPINDLE 1</span>
+
+                </div>
+
+
+                <div class="spindle">
+
+                    <div
+                        id="heroBobbin2"
+                        class="bobbin">
+                    </div>
+
+                    <span>SPINDLE 2</span>
+
+                </div>
+
+
+                <div class="spindle">
+
+                    <div
+                        id="heroBobbin3"
+                        class="bobbin">
+                    </div>
+
+                    <span>SPINDLE 3</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="control-box">
+
+                <div
+                    id="heroLCD"
+                    class="lcd">
+
+                    RPM 0<br>
+                    T 0.0N
+
+                </div>
+
+            </div>
+
+
+            <div class="machine-base"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     ADVANCED SENSOR CONTROL CENTER
+========================================= -->
+
+<div class="advanced-sensors">
+
+    <div class="advanced-title">
+
+        <div>
+            <span class="mini-label">
+                REAL-TIME DATA
+            </span>
+
+            <h2>
+                Sensor Control Center 📡
+            </h2>
+
+            <p>
+                Live monitoring of machine sensors and
+                communication with the Arduino controller.
+            </p>
+        </div>
+
+        <div class="system-online">
+            <span class="pulse-dot"></span>
+            SYSTEM ONLINE
+        </div>
+
+    </div>
+
+
+    <!-- SENSOR DATA GRID -->
+
+    <div class="sensor-data-grid">
+
+
+        <!-- HALL SENSOR 1 -->
+
+        <div class="sensor-data-card">
+
+            <div class="data-top">
+
+                <div class="sensor-symbol">
+                    🌀
+                </div>
+
+                <div>
+
+                    <h3>Hall Sensor 1</h3>
+
+                    <span>
+                        SPINDLE 1
+                    </span>
+
+                </div>
+
+                <div class="live-dot">
+                    ●
+                </div>
+
+            </div>
+
+
+            <div class="reading">
+
+                <strong id="hall1Value">
+                    0
+                </strong>
+
+                <small>
+                    RPM
+                </small>
+
+            </div>
+
+
+            <div class="signal-label">
+                Signal Strength
+                <span>92%</span>
+            </div>
+
+            <div class="signal-bar">
+                <div style="width:92%"></div>
+            </div>
+
+
+            <p class="sensor-info">
+                Detects the magnetic pulses generated
+                by spindle 1 rotation.
+            </p>
+
+        </div>
+
+
+
+        <!-- HALL SENSOR 2 -->
+
+        <div class="sensor-data-card">
+
+            <div class="data-top">
+
+                <div class="sensor-symbol">
+                    🌀
+                </div>
+
+                <div>
+
+                    <h3>Hall Sensor 2</h3>
+
+                    <span>
+                        SPINDLE 2
+                    </span>
+
+                </div>
+
+                <div class="live-dot">
+                    ●
+                </div>
+
+            </div>
+
+
+            <div class="reading">
+
+                <strong id="hall2Value">
+                    0
+                </strong>
+
+                <small>
+                    RPM
+                </small>
+
+            </div>
+
+
+            <div class="signal-label">
+                Signal Strength
+                <span>89%</span>
+            </div>
+
+            <div class="signal-bar">
+                <div style="width:89%"></div>
+            </div>
+
+
+            <p class="sensor-info">
+                Monitors the rotational speed of
+                spindle 2.
+            </p>
+
+        </div>
+
+
+
+        <!-- HALL SENSOR 3 -->
+
+        <div class="sensor-data-card">
+
+            <div class="data-top">
+
+                <div class="sensor-symbol">
+                    🌀
+                </div>
+
+                <div>
+
+                    <h3>Hall Sensor 3</h3>
+
+                    <span>
+                        SPINDLE 3
+                    </span>
+
+                </div>
+
+                <div class="live-dot">
+                    ●
+                </div>
+
+            </div>
+
+
+            <div class="reading">
+
+                <strong id="hall3Value">
+                    0
+                </strong>
+
+                <small>
+                    RPM
+                </small>
+
+            </div>
+
+
+            <div class="signal-label">
+                Signal Strength
+                <span>94%</span>
+            </div>
+
+            <div class="signal-bar">
+                <div style="width:94%"></div>
+            </div>
+
+
+            <p class="sensor-info">
+                Measures the rotation of spindle 3
+                continuously.
+            </p>
+
+        </div>
+
+
+
+        <!-- LOAD CELL -->
+
+        <div class="sensor-data-card">
+
+            <div class="data-top">
+
+                <div class="sensor-symbol">
+                    ⚖️
+                </div>
+
+                <div>
+
+                    <h3>Load Cell</h3>
+
+                    <span>
+                        TENSION SENSOR
+                    </span>
+
+                </div>
+
+                <div class="live-dot">
+                    ●
+                </div>
+
+            </div>
+
+
+            <div class="reading">
+
+                <strong id="loadValue">
+                    0.0
+                </strong>
+
+                <small>
+                    N
+                </small>
+
+            </div>
+
+
+            <div class="signal-label">
+                Signal Strength
+                <span>96%</span>
+            </div>
+
+            <div class="signal-bar">
+                <div style="width:96%"></div>
+            </div>
+
+
+            <p class="sensor-info">
+                Measures the tension applied to the
+                yarn during spinning.
+            </p>
+
+        </div>
+
+
+
+        <!-- IR SENSOR -->
+
+        <div class="sensor-data-card">
+
+            <div class="data-top">
+
+                <div class="sensor-symbol">
+                    🔴
+                </div>
+
+                <div>
+
+                    <h3>IR Yarn Sensor</h3>
+
+                    <span>
+                        YARN DETECTION
+                    </span>
+
+                </div>
+
+                <div
+                    id="irIndicator"
+                    class="live-dot">
+                    ●
+                </div>
+
+            </div>
+
+
+            <div class="reading">
+
+                <strong id="irValue">
+                    YARN OK
+                </strong>
+
+            </div>
+
+
+            <div class="signal-label">
+                Detection Signal
+                <span>98%</span>
+            </div>
+
+            <div class="signal-bar">
+                <div style="width:98%"></div>
+            </div>
+
+
+            <p class="sensor-info">
+                Detects yarn continuity and identifies
+                interruptions in the spinning process.
+            </p>
+
+        </div>
+
+
+
+        <!-- ROTARY ENCODER -->
+
+        <div class="sensor-data-card">
+
+            <div class="data-top">
+
+                <div class="sensor-symbol">
+                    🔄
+                </div>
+
+                <div>
+
+                    <h3>Rotary Encoder</h3>
+
+                    <span>
+                        HAND-WHEEL
+                    </span>
+
+                </div>
+
+                <div class="live-dot">
+                    ●
+                </div>
+
+            </div>
+
+
+            <div class="reading">
+
+                <strong id="encoderValue">
+                    0
+                </strong>
+
+                <small>
+                    PULSES
+                </small>
+
+            </div>
+
+
+            <div class="signal-label">
+                Signal Strength
+                <span>91%</span>
+            </div>
+
+            <div class="signal-bar">
+                <div style="width:91%"></div>
+            </div>
+
+
+            <p class="sensor-info">
+                Counts hand-wheel movement and helps
+                determine machine rotation.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ARDUINO STATUS -->
+
+    <div class="arduino-monitor">
+
+        <div class="arduino-icon">
+            🔌
+        </div>
+
+        <div class="arduino-text">
+
+            <h3>
+                Arduino Communication
+            </h3>
+
+            <p>
+                Sensor data → Arduino → Processing → Dashboard
+            </p>
+
+        </div>
+
+        <div class="arduino-status">
+
+            <span class="pulse-dot"></span>
+
+            CONNECTED
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<!-- =====================================
+     MACHINE SECTION
+===================================== -->
+
+<section id="machine">
+
+    <div class="section-heading">
+
+        <div class="number">
+            01 / INTERACTIVE MACHINE
+        </div>
+
+        <h2>
+            Watch the Machine Work ⚙️
+        </h2>
+
+    </div>
+
+
+    <div class="machine-stage">
+
+        <div class="machine-body">
+
+            <div class="machine-top"></div>
+
+            <div class="machine-support left"></div>
+
+            <div class="machine-support right"></div>
+
+            <div class="shaft"></div>
+
+            <div
+                id="wheel"
+                class="hand-wheel">
+
+                <div class="wheel-center"></div>
+
+            </div>
+
+
+            <div class="spindle-container">
+
+                <div class="spindle">
+
+                    <div
+                        id="bobbin1"
+                        class="bobbin">
+                    </div>
+
+                    <span>SPINDLE 1</span>
+
+                </div>
+
+
+                <div class="spindle">
+
+                    <div
+                        id="bobbin2"
+                        class="bobbin">
+                    </div>
+
+                    <span>SPINDLE 2</span>
+
+                </div>
+
+
+                <div class="spindle">
+
+                    <div
+                        id="bobbin3"
+                        class="bobbin">
+                    </div>
+
+                    <span>SPINDLE 3</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="control-box">
+
+                <div
+                    id="machineLCD"
+                    class="lcd">
+
+                    RPM 0<br>
+                    T 0.0N
+
+                </div>
+
+            </div>
+
+
+            <div class="machine-base"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="controls">
+
+        <button
+            class="control-btn"
+            onclick="startMachine()">
+
+            ▶ Start Machine
+
+        </button>
+
+
+        <button
+            class="control-btn"
+            onclick="increaseSpeed()">
+
+            ⚡ Increase Speed
+
+        </button>
+
+
+        <button
+            class="control-btn"
+            onclick="decreaseSpeed()">
+
+            🐢 Slow Down
+
+        </button>
+
+
+        <button
+            class="control-btn break-btn"
+            onclick="simulateBreak()">
+
+            ⚠ Yarn Break
+
+        </button>
+
+
+        <button
+            class="control-btn reset-btn"
+            onclick="resetMachine()">
+
+            ↻ Reset
+
+        </button>
+
+    </div>
+
+
+    <div
+        id="alert"
+        class="alert">
+
+        🟢 System ready — start the machine to begin.
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     DASHBOARD
+===================================== -->
+
+<section
+    id="dashboard"
+    class="dashboard">
+
+    <div class="section-heading">
+
+        <div class="number">
+            02 / LIVE MONITORING
+        </div>
+
+        <h2>
+            Smart Dashboard 📊
+        </h2>
+
+    </div>
+
+
+    <div class="metrics">
+
+
+        <div class="metric">
+
+            <div class="metric-icon">⚙️</div>
+
+            <span class="metric-title">
+                SPINDLE 1 RPM
+            </span>
+
+            <strong
+                id="rpm1"
+                class="metric-value">
+
+                0
+
+            </strong>
+
+            <small>
+                Hall Sensor
+            </small>
+
+        </div>
+
+
+        <div class="metric">
+
+            <div class="metric-icon">⚙️</div>
+
+            <span class="metric-title">
+                SPINDLE 2 RPM
+            </span>
+
+            <strong
+                id="rpm2"
+                class="metric-value">
+
+                0
+
+            </strong>
+
+            <small>
+                Hall Sensor
+            </small>
+
+        </div>
+
+
+        <div class="metric">
+
+            <div class="metric-icon">⚙️</div>
+
+            <span class="metric-title">
+                SPINDLE 3 RPM
+            </span>
+
+            <strong
+                id="rpm3"
+                class="metric-value">
+
+                0
+
+            </strong>
+
+            <small>
+                Hall Sensor
+            </small>
+
+        </div>
+
+
+        <div class="metric">
+
+            <div class="metric-icon">🧵</div>
+
+            <span class="metric-title">
+                YARN TENSION
+            </span>
+
+            <strong
+                id="tension"
+                class="metric-value">
+
+                0.0 N
+
+            </strong>
+
+            <small>
+                Load Cell
+            </small>
+
+        </div>
+
+
+        <div class="metric">
+
+            <div class="metric-icon">📏</div>
+
+            <span class="metric-title">
+                YARN PRODUCED
+            </span>
+
+            <strong
+                id="production"
+                class="metric-value">
+
+                0.0 m
+
+            </strong>
+
+            <small>
+                Production Counter
+            </small>
+
+        </div>
+
+
+        <div class="metric">
+
+            <div class="metric-icon">🚀</div>
+
+            <span class="metric-title">
+                EFFICIENCY
+            </span>
+
+            <strong
+                id="efficiency"
+                class="metric-value">
+
+                0%
+
+            </strong>
+
+            <small>
+                Estimated
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- GRAPH -->
+
+    <div class="graph-box">
+
+        <h3>
+            📈 Live Spindle RPM
+        </h3>
+
+        <canvas id="rpmGraph"></canvas>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     SENSORS
+===================================== -->
+
+<section class="sensor-section">
+
+    <div class="section-heading">
+
+        <div class="number">
+            03 / SENSOR NETWORK
+        </div>
+
+        <h2>
+            Smart Sensor Monitoring 🔬
+        </h2>
+
+    </div>
+
+
+    <div class="sensor-grid">
+
+
+        <div class="sensor-card">
+
+            <div class="sensor-icon">
+                🌀
+            </div>
+
+            <h3>
+                Hall Sensor 1
+            </h3>
+
+            <p>
+                Measures spindle 1 rotational speed.
+            </p>
+            <div class="sensor-reading" id="hall1Sensor">
+    0 RPM
+</div>
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                ONLINE
+
+            </div>
+
+        </div>
+
+
+        <div class="sensor-card">
+
+            <div class="sensor-icon">
+                🌀
+            </div>
+
+            <h3>
+                Hall Sensor 2
+            </h3>
+
+            <p>
+                Measures spindle 2 rotational speed.
+            </p>
+
+            <div class="sensor-reading" id="hall2Sensor">
+                0 RPM
+            </div>
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                ONLINE
+
+            </div>
+
+        </div>
+
+
+        <div class="sensor-card">
+
+            <div class="sensor-icon">
+                🌀
+            </div>
+
+            <h3>
+                Hall Sensor 3
+            </h3>
+
+            <p>
+                Measures spindle 3 rotational speed.
+            </p>
+
+            <div class="sensor-reading" id="hall3Sensor">
+                0 RPM
+            </div>
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                ONLINE
+
+            </div>
+
+        </div>
+
+
+        <div class="sensor-card">
+
+            <div class="sensor-icon">
+                🧵
+            </div>
+
+            <h3>
+                Load Cell
+            </h3>
+
+            <p>
+                Measures yarn tension in real time.
+            </p>
+
+            <div class="sensor-reading" id="loadSensor">
+                0.0 N
+            </div>
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                ONLINE
+
+            </div>
+
+        </div>
+
+
+        <div class="sensor-card">
+
+            <div class="sensor-icon">
+                🔴
+            </div>
+
+            <h3>
+                IR Yarn Sensor
+            </h3>
+
+            <p>
+                Detects yarn break or interruption.
+            </p>
+
+            <div class="sensor-reading" id="irSensor">
+                ✓ YARN OK
+            </div>
+
+            <div
+                id="yarnStatus"
+                class="status">
+
+                <span
+                    class="status-dot">
+                </span>
+
+                YARN OK
+
+            </div>
+
+        </div>
+
+
+        <div class="sensor-card">
+
+            <div class="sensor-icon">
+                🔄
+            </div>
+
+            <h3>
+                Rotary Encoder
+            </h3>
+
+            <p>
+                Counts hand-wheel rotations.
+            </p>
+
+            <div class="sensor-reading" id="encoderSensor">
+                0
+            </div>
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                ONLINE
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     PRODUCTIVITY
+===================================== -->
+
+<!-- =====================================
+     04 / IMPACT
+===================================== -->
+
+<section class="impact-section">
+
+    <div class="impact-header">
+
+        <div class="section-number">
+            04 / IMPACT
+        </div>
+
+        <h2>
+            Better spinning.
+            <span>Better outcomes.</span>
+        </h2>
+
+        <p>
+            SmartSpin brings real-time monitoring to traditional hand
+            spinning, helping artisans improve productivity, consistency
+            and visibility into their work.
+        </p>
+
+    </div>
+
+
+    <div class="impact-grid">
+
+        <!-- IMPACT 01 -->
+
+        <div class="impact-card">
+
+            <div class="impact-top">
+                <span class="impact-number">01</span>
+                <span class="impact-icon">⚡</span>
+            </div>
+
+            <h3>
+                Higher Productivity
+            </h3>
+
+            <p>
+                Monitor spindle speed and machine activity to help
+                artisans maintain a consistent spinning process.
+            </p>
+
+            <div class="impact-bottom">
+                <span>PRODUCTIVITY</span>
+                <span>↗</span>
+            </div>
+
+        </div>
+
+
+        <!-- IMPACT 02 -->
+
+        <div class="impact-card">
+
+            <div class="impact-top">
+                <span class="impact-number">02</span>
+                <span class="impact-icon">🧵</span>
+            </div>
+
+            <h3>
+                Consistent Yarn
+            </h3>
+
+            <p>
+                Monitor yarn tension and continuity to identify
+                interruptions during the spinning process.
+            </p>
+
+            <div class="impact-bottom">
+                <span>YARN QUALITY</span>
+                <span>↗</span>
+            </div>
+
+        </div>
+
+
+        <!-- IMPACT 03 -->
+
+        <div class="impact-card">
+
+            <div class="impact-top">
+                <span class="impact-number">03</span>
+                <span class="impact-icon">📈</span>
+            </div>
+
+            <h3>
+                Measurable Output
+            </h3>
+
+            <p>
+                Convert machine activity into useful production data
+                such as RPM, yarn output and machine efficiency.
+            </p>
+
+            <div class="impact-bottom">
+                <span>DATA</span>
+                <span>↗</span>
+            </div>
+
+        </div>
+
+
+        <!-- IMPACT 04 -->
+
+        <div class="impact-card">
+
+            <div class="impact-top">
+                <span class="impact-number">04</span>
+                <span class="impact-icon">🌱</span>
+            </div>
+
+            <h3>
+                Artisan Empowerment
+            </h3>
+
+            <p>
+                Give artisans clearer information about their work
+                while preserving the human-centred nature of khadi.
+            </p>
+
+            <div class="impact-bottom">
+                <span>ARTISAN</span>
+                <span>↗</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- IMPACT FLOW -->
+
+    <div class="impact-flow">
+
+        <div class="impact-flow-item">
+            <span>01</span>
+            <strong>SENSE</strong>
+            <small>Collect machine data</small>
+        </div>
+
+        <div class="impact-flow-line"></div>
+
+        <div class="impact-flow-item">
+            <span>02</span>
+            <strong>MONITOR</strong>
+            <small>Understand performance</small>
+        </div>
+
+        <div class="impact-flow-line"></div>
+
+        <div class="impact-flow-item">
+            <span>03</span>
+            <strong>IMPROVE</strong>
+            <small>Optimize the process</small>
+        </div>
+
+        <div class="impact-flow-line"></div>
+
+        <div class="impact-flow-item">
+            <span>04</span>
+            <strong>IMPACT</strong>
+            <small>Support better production</small>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     WORKING PRINCIPLE
+===================================== -->
+
+<section id="working">
+
+    <div class="section-heading">
+
+        <div class="number">
+            05 / WORKING PRINCIPLE
+        </div>
+
+        <h2>
+            How SmartSpin Works ⚙️
+        </h2>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Artisan Spins</h3>
+            <p>Hand wheel turns the shaft, driving all three spindles.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Sensors Capture Data</h3>
+            <p>Hall sensors, load cell, IR sensor and encoder read live machine activity.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Arduino Processes</h3>
+            <p>Raw signals are converted into RPM, tension and yarn-continuity values.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <h3>Dashboard Updates</h3>
+            <p>Processed values are pushed to the live monitoring dashboard.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">5</div>
+            <h3>Alerts &amp; Feedback</h3>
+            <p>System flags yarn breaks and speed drops in real time.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">6</div>
+            <h3>Insights for Artisan</h3>
+            <p>Productivity and quality data help artisans refine their process.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     ARDUINO
+===================================== -->
+
+<section
+    id="arduino"
+    class="arduino">
+
+    <div class="section-heading">
+
+        <div class="number">
+            06 / HARDWARE INTEGRATION
+        </div>
+
+        <h2>
+            Arduino Connection 🔌
+        </h2>
+
+    </div>
+
+
+    <div class="connection">
+
+
+        <div class="connection-card">
+
+            <div class="icon">
+                🔬
+            </div>
+
+            <h3>
+                Sensors
+            </h3>
+
+            <p>
+
+                Hall Sensors ×3<br>
+
+                IR Yarn Sensors ×3<br>
+
+                Load Cell<br>
+
+                Rotary Encoder
+
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            →
+        </div>
+
+
+        <div class="connection-card">
+
+            <div class="icon">
+                🟦
+            </div>
+
+            <h3>
+                Arduino UNO
+            </h3>
+
+            <p>
+
+                Reads sensor data<br>
+
+                Calculates RPM<br>
+
+                Monitors tension<br>
+
+                Detects yarn break
+
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            →
+        </div>
+
+
+        <div class="connection-card">
+
+            <div class="icon">
+                📟
+            </div>
+
+            <h3>
+                Output
+            </h3>
+
+            <p>
+
+                LCD Display<br>
+
+                Buzzer<br>
+
+                LED Indicators<br>
+
+                Production Data
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer>
+
+    <h3>
+        KHADI SMARTSPIN
+    </h3>
+
+    <p>
+        Innovation • Productivity • Sustainability • Empowerment
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let running = false;
+
+let speed = 0;
+
+let production = 0;
+
+let rotation = 0;
+
+let yarnBroken = false;
+
+let graphData1 = [];
+
+let graphData2 = [];
+
+let graphData3 = [];
+
+
+
+/* =========================================
+   START DEMO
+========================================= */
+
+function startDemo() {
+
+    document
+        .getElementById("machine")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+    running = true;
+
+    document
+        .getElementById("alert")
+        .innerHTML =
+        "🟢 Machine started — sensors are now monitoring.";
+
+}
+
+
+
+/* =========================================
+   START MACHINE
+========================================= */
+
+function startMachine() {
+
+    running = !running;
+
+    if (running) {
+
+        document
+            .getElementById("alert")
+            .innerHTML =
+            "🟢 Machine running — all sensors active.";
+
+    }
+
+    else {
+
+        speed = 0;
+
+        document
+            .getElementById("alert")
+            .innerHTML =
+            "⏸ Machine paused.";
+
+    }
+
+}
+
+
+
+/* =========================================
+   SPEED CONTROL
+========================================= */
+
+function increaseSpeed() {
+
+    running = true;
+
+    speed += 10;
+
+    if (speed > 100) {
+
+        speed = 100;
+
+    }
+
+}
+
+
+
+function decreaseSpeed() {
+
+    speed -= 10;
+
+    if (speed < 0) {
+
+        speed = 0;
+
+    }
+
+}
+
+
+
+/* =========================================
+   YARN BREAK
+========================================= */
+
+function simulateBreak() {
+
+    running = true;
+
+    yarnBroken = true;
+
+    document
+        .getElementById("alert")
+        .innerHTML =
+        "🔴 YARN BREAK DETECTED! IR sensor triggered.";
+
+    document
+        .getElementById("alert")
+        .classList
+        .add("warning");
+
+    document
+        .getElementById("yarnStatus")
+        .innerHTML =
+        "🔴 YARN BREAK";
+
+}
+
+
+
+/* =========================================
+   RESET
+========================================= */
+
+function resetMachine() {
+
+    running = false;
+
+    speed = 0;
+
+    production = 0;
+
+    rotation = 0;
+
+    yarnBroken = false;
+
+    graphData1 = [];
+
+    graphData2 = [];
+
+    graphData3 = [];
+
+    document
+        .getElementById("alert")
+        .innerHTML =
+        "🟢 System ready — start the machine to begin.";
+
+    document
+        .getElementById("alert")
+        .classList
+        .remove("warning");
+
+    document
+        .getElementById("yarnStatus")
+        .innerHTML =
+        "🟢 YARN OK";
+
+}
+
+
+
+/* =========================================
+   MACHINE UPDATE
+========================================= */
+
+function updateMachine() {
+
+    let rpm1 = 0;
+    let rpm2 = 0;
+    let rpm3 = 0;
+    let tension = 0;
+
+    /* =====================================
+       MACHINE RUNNING
+    ===================================== */
+
+    if (running) {
+
+        // Main spindle RPM
+        rpm1 = Math.round(speed * 4.16);
+
+        // Small realistic variation between spindles
+        rpm2 = Math.max(
+            0,
+            Math.round(rpm1 - 2 + Math.random() * 5)
+        );
+
+        rpm3 = Math.max(
+            0,
+            Math.round(rpm1 - 4 + Math.random() * 6)
+        );
+
+        /* =================================
+           YARN BREAK
+        ================================= */
+
+        if (yarnBroken) {
+            rpm2 = 0;
+        }
+
+        /* =================================
+           TENSION
+        ================================= */
+
+        tension =
+            0.7 +
+            (speed / 35) +
+            (Math.random() * 0.3);
+
+        /* =================================
+           PRODUCTION
+        ================================= */
+
+        production += rpm1 * 0.00006;
+
+        /* =================================
+           MACHINE ROTATION
+        ================================= */
+
+        rotation += speed / 3;
+
+        document.getElementById("wheel").style.transform =
+            "rotate(" + rotation + "deg)";
+
+        document.getElementById("heroWheel").style.transform =
+            "rotate(" + rotation + "deg)";
+
+        /* =================================
+           BOBBIN ROTATION
+        ================================= */
+
+        let bobbinRotation = rotation * 4;
+
+        document.getElementById("bobbin1").style.transform =
+            "rotate(" + bobbinRotation + "deg)";
+
+        document.getElementById("bobbin3").style.transform =
+            "rotate(" + bobbinRotation + "deg)";
+
+        document.getElementById("heroBobbin1").style.transform =
+            "rotate(" + bobbinRotation + "deg)";
+
+        document.getElementById("heroBobbin3").style.transform =
+            "rotate(" + bobbinRotation + "deg)";
+
+        if (!yarnBroken) {
+
+            document.getElementById("bobbin2").style.transform =
+                "rotate(" + bobbinRotation + "deg)";
+
+            document.getElementById("heroBobbin2").style.transform =
+                "rotate(" + bobbinRotation + "deg)";
+
+        } else {
+
+            document.getElementById("bobbin2").style.transform =
+                "rotate(0deg)";
+
+            document.getElementById("heroBobbin2").style.transform =
+                "rotate(0deg)";
+        }
+    }
+
+    /* =====================================
+       SENSOR CONTROL CENTER
+    ===================================== */
+
+    document.getElementById("hall1Sensor").innerText =
+        rpm1 + " RPM";
+
+    document.getElementById("hall2Sensor").innerText =
+        rpm2 + " RPM";
+
+    document.getElementById("hall3Sensor").innerText =
+        rpm3 + " RPM";
+
+    document.getElementById("loadSensor").innerText =
+        tension.toFixed(1) + " N";
+
+    document.getElementById("encoderSensor").innerText =
+        Math.round(rotation);
+
+    document.getElementById("irSensor").innerText =
+        yarnBroken
+            ? "⚠ YARN BREAK"
+            : "✓ YARN OK";
+
+    /* =====================================
+       DASHBOARD
+    ===================================== */
+
+    document.getElementById("rpm1").innerText =
+        rpm1;
+
+    document.getElementById("rpm2").innerText =
+        rpm2;
+
+    document.getElementById("rpm3").innerText =
+        rpm3;
+
+    document.getElementById("tension").innerText =
+        tension.toFixed(1) + " N";
+
+    document.getElementById("production").innerText =
+        production.toFixed(2) + " m";
+
+    /* =====================================
+       EFFICIENCY
+    ===================================== */
+
+    let efficiency = 0;
+
+    if (running && speed > 0) {
+
+        efficiency = Math.min(
+            100,
+            Math.round(
+                (speed / 100) * 100
+            )
+        );
+
+        // Reduce efficiency during yarn break
+        if (yarnBroken) {
+            efficiency = Math.max(
+                0,
+                efficiency - 25
+            );
+        }
+    }
+
+    document.getElementById("efficiency").innerText =
+        efficiency + "%";
+
+    /* =====================================
+       LCD DISPLAY
+    ===================================== */
+
+    let lcdText =
+        "RPM " +
+        rpm1 +
+        "<br>" +
+        "T " +
+        tension.toFixed(1) +
+        "N";
+
+    document.getElementById("machineLCD").innerHTML =
+        lcdText;
+
+    document.getElementById("heroLCD").innerHTML =
+        lcdText;
+
+    /* =====================================
+       LIVE GRAPH DATA
+    ===================================== */
+
+    graphData1.push(rpm1);
+    graphData2.push(rpm2);
+    graphData3.push(rpm3);
+
+    if (graphData1.length > 50) {
+
+        graphData1.shift();
+        graphData2.shift();
+        graphData3.shift();
+    }
+
+    drawGraph();
+}
+
+/* =========================================
+   LIVE GRAPH
+========================================= */
+
+function drawGraph() {
+
+    let canvas =
+        document.getElementById(
+            "rpmGraph"
+        );
+
+    let ctx =
+        canvas.getContext("2d");
+
+
+    canvas.width =
+        canvas.clientWidth * 2;
+
+    canvas.height =
+        canvas.clientHeight * 2;
+
+
+    ctx.scale(2,2);
+
+
+    let width =
+        canvas.clientWidth;
+
+    let height =
+        canvas.clientHeight;
+
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    /* GRID */
+
+    ctx.strokeStyle =
+        "rgba(255,255,255,0.08)";
+
+    ctx.lineWidth = 1;
+
+
+    for (
+        let y = 0;
+        y < height;
+        y += 50
+    ) {
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            0,
+            y
+        );
+
+        ctx.lineTo(
+            width,
+            y
+        );
+
+        ctx.stroke();
+
+    }
+
+
+    /* DRAW LINE FUNCTION */
+
+    function drawLine(
+        data,
+        color
+    ) {
+
+        if (
+            data.length < 2
+        ) return;
+
+
+        ctx.beginPath();
+
+        data.forEach(
+            (value,index) => {
+
+                let x =
+                    index /
+                    (data.length - 1)
+                    * width;
+
+
+                let maxRPM =
+                    450;
+
+
+                let y =
+                    height -
+                    (
+                        value /
+                        maxRPM
+                    ) *
+                    height;
+
+
+                if (index === 0) {
+
+                    ctx.moveTo(
+                        x,
+                        y
+                    );
+
+                }
+
+                else {
+
+                    ctx.lineTo(
+                        x,
+                        y
+                    );
+
+                }
+
+            }
+        );
+
+
+        ctx.strokeStyle =
+            color;
+
+        ctx.lineWidth = 3;
+
+        ctx.stroke();
+
+    }
+
+
+    drawLine(
+        graphData1,
+        "#4c8dff"
+    );
+
+
+    drawLine(
+        graphData2,
+        "#ffb703"
+    );
+
+
+    drawLine(
+        graphData3,
+        "#ff4d8d"
+    );
+
+}
+
+
+
+/* =========================================
+   RUN LOOP
+========================================= */
+
+setInterval(
+    updateMachine,
+    700
+);
+
+
+</script>
+
+</body>
+
+</html>
